@@ -1,0 +1,47 @@
+server:
+  port: 8080 # 服务端口，这也是默认值，可以不写，如果起在其他端口，需要写上
+
+management:
+  server:
+    port: 8081 # 管理端口，不要暴露到外网
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include: '*'
+      base-path: /admin
+      path-mapping:
+        shutdown: stop
+  endpoint:
+    health:
+      show-details: never
+      enabled: true
+    #可以通过http请求优雅关闭spring应用程序
+    shutdown:
+      enabled: true
+
+
+spring:
+  application:
+    name: nimble
+  data:
+    mongodb:
+      port: 27017 # mongodb端口，这也是默认值，可以不写，如果起在其他端口，需要写上
+      database: nimble # mongodb数据库名
+      host: localhost # mongodb主机名，这也是默认值，可以不写，如果起在其他主机，需要写上
+
+    redis:
+      client-type: lettuce
+      host: localhost # redis主机名，这也是默认值，可以不写，如果起在其他主机，需要写上
+      port: 6379 # redis端口，这也是默认值，可以不写，如果起在其他端口，需要写上
+      connect-timeout: 5s
+      timeout: 3s
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+  main:
+    banner-mode: off
+numeric:
+  path: ${project.basedir}/numeric # 数值配置文件路径
