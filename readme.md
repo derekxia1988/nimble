@@ -12,3 +12,5 @@
 3. 在application.yml中可以定义自定义的配置，参考NumericProperties类，另外mongodb和redis的配置都可以在这里修改。
 4. springboot可以通过profile来切换配置，如果需要在不同环境使用不同配置可以了解一下。
 5. 如果必要可以写单测，参考UserControllerTest。
+6. TCP网络相关的入口可以看GameTcpHandler类。
+7. 顺序执行的线程池可以看ExecutorConfiguration类。
