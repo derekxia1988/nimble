@@ -45,3 +45,7 @@ spring:
     banner-mode: off
 numeric:
   path: ${project.basedir}/numeric # 数值配置文件路径
+
+net:
+  tcp:
+    port: 3000

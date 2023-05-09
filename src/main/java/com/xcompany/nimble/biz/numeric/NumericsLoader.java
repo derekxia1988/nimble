@@ -47,7 +47,7 @@ class NumericsLoader {
         this.numericProperties = numericProperties;
     }
 
-    @PostConstruct
+//    @PostConstruct
     public void start() {
         log.info("[NUMERIC]load all numerics on start.");
         var numerics = loadAllNumerics();
@@ -165,8 +165,8 @@ class NumericsLoader {
 //                });
 //    }
 
-    @Autowired
-    public void setPreprocessors(List<NumericPreprocessor> preprocessors) {
-        this.preprocessors = preprocessors;
-    }
+//    @Autowired
+//    public void setPreprocessors(List<NumericPreprocessor> preprocessors) {
+//        this.preprocessors = preprocessors;
+//    }
 }
