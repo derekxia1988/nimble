@@ -9,4 +9,5 @@ import org.springframework.context.annotation.Configuration;
 @Data
 public class NumericProperties {
     private String path;
+    private String packagePath;
 }

@@ -14,3 +14,4 @@
 5. 如果必要可以写单测，参考UserControllerTest。
 6. TCP网络相关的入口可以看GameTcpHandler类。
 7. 顺序执行的线程池可以看ExecutorConfiguration类。
+8. 数值相关的代码在biz/numeric包下，NumericLoader是加在策划数值的入口，通过NumericProperties配置数值的地址和数值表对应的java类的package.
