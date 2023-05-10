@@ -1,4 +1,4 @@
-package com.xcompany.nimble.biz.data;
+package com.xcompany.nimble.biz.data.mongo;
 
 import lombok.Builder;
 

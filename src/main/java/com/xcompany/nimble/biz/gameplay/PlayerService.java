@@ -1,27 +1,26 @@
 package com.xcompany.nimble.biz.gameplay;
 
-import com.xcompany.nimble.biz.data.Player;
-import com.xcompany.nimble.biz.db.PlayerRepository;
+import com.alibaba.fastjson.JSON;
+import com.xcompany.nimble.base.net.ws.WSRespEvent;
+import com.xcompany.nimble.biz.data.mongo.Player;
+import com.xcompany.nimble.biz.data.protocol.Response.RespBase;
+import com.xcompany.nimble.biz.data.protocol.Response.RespLoginData;
+import com.xcompany.nimble.biz.data.protocol.Response.RespOpCode;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 @Service
+@Log4j2
 public class PlayerService {
-    private final PlayerRepository playerRepository;
-    public PlayerService(PlayerRepository playerRepository) {
-        this.playerRepository = playerRepository;
-    }
+    @Autowired
+    private ApplicationEventPublisher publisher;
 
-    public Player login(String id){
-        if(!this.playerRepository.exist(id)) {
-            this.createPlayer(id);
-        }
-
-        return this.playerRepository.findById(id);
-    }
-
-    private void createPlayer(String name){
-        Player player = Player.builder().id(name).build();
-        player.init();
-        this.playerRepository.insert(player);
+    public void login(Player player, boolean isNew){
+        RespLoginData respLoginData = RespLoginData.builder().player(player).build();
+        RespBase respBase = RespBase.builder().pid(player.getId()).opCode(RespOpCode.LOGIN.getOpCode()).respData(respLoginData).build();
+        log.error("返回对象:{}", JSON.toJSONString(respLoginData));
+        publisher.publishEvent(new WSRespEvent(player, player.getId(), respBase));
     }
 }
