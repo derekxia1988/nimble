@@ -5,19 +5,26 @@ package com.xcompany.nimble.base.net.ws;
  * 注解的值将被用于监听用户连接的终端访问URL地址,客户端可以通过这个URL来连接到WebSocket服务器端
  */
 
+import com.alibaba.fastjson.JSONObject;
 import jakarta.websocket.*;
 import jakarta.websocket.server.PathParam;
 import jakarta.websocket.server.ServerEndpoint;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 @Log4j2
-@Service
+@Component
 @ServerEndpoint("/api/webSocket/{sid}")
 public class WebSocketServer {
+//    @Autowired
+//    ApplicationContext applicationContext;
+
     //静态变量，用来记录当前在线连接数。
     private static int onlineCount = 0;
     //concurrent包的线程安全Set，用来存放每个客户端对应的WebSocket对象
@@ -58,6 +65,7 @@ public class WebSocketServer {
     @OnMessage
     public void onMessage(String message, Session session){
         log.info("收到来自窗口" + sid + "的信息:" + message);
+//        applicationContext.publishEvent(new WSReqEvent(this, JSONObject.parseObject(message)));
         //群发消息
         for (WebSocketServer item : webSocketSet) {
             try {
