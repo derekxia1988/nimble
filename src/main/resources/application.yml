@@ -28,11 +28,9 @@ spring:
     mongodb:
       port: 27017 # mongodb端口，这也是默认值，可以不写，如果起在其他端口，需要写上
       database: nimble # mongodb数据库名
-      host: 192.168.60.125 # mongodb主机名，这也是默认值，可以不写，如果起在其他主机，需要写上
 
     redis:
       client-type: lettuce
-      host: 192.168.60.125 # redis主机名，这也是默认值，可以不写，如果起在其他主机，需要写上
       port: 6379 # redis端口，这也是默认值，可以不写，如果起在其他端口，需要写上
       connect-timeout: 5s
       timeout: 3s
