@@ -11,8 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 
-import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.*;
 
 /**
  * @author xiadong
@@ -28,7 +27,9 @@ public class ExecutorConfiguration {
     @Bean
     public OrderedExecutor<String> bizExecutor() {
         return new BizExecutor(
-                ForkJoinPool.commonPool(),  // 这里可以不适用ForkJoinPool，而是使用ThreadPoolExecutor，也许会更适合
+                new ThreadPoolExecutor(1, Runtime.getRuntime().availableProcessors(),
+                        60L, TimeUnit.SECONDS,
+                        new LinkedBlockingQueue<>()),
                 (throwable -> log.error("biz executor error.", throwable)));
     }
 
