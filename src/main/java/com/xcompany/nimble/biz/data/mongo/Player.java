@@ -15,6 +15,8 @@ public class Player {
     @Id
     private String id;
 
+    private int lordLevel;
+
     private Map<String, Hero> heroMap;
 
     private Map<String, Item> itemMap;
@@ -25,6 +27,14 @@ public class Player {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public int getLordLevel() {
+        return lordLevel;
+    }
+
+    public void setLordLevel(int lordLevel) {
+        this.lordLevel = lordLevel;
     }
 
     public Map<String, Hero> getHeroMap() {
@@ -44,13 +54,14 @@ public class Player {
     }
 
     public void init(){
+        this.lordLevel= 1;
         this.heroMap = Maps.newHashMap();
         this.itemMap = Maps.newHashMap();
-        this.getHeroMap().put("20001", Hero.builder().id(20001).level(1).build());
-        this.getHeroMap().put("20002", Hero.builder().id(20002).level(1).build());
-        this.getHeroMap().put("20003", Hero.builder().id(20003).level(1).build());
-        this.getHeroMap().put("30001", Hero.builder().id(30001).level(1).build());
-        this.getHeroMap().put("30002", Hero.builder().id(30002).level(1).build());
+        this.getHeroMap().put("20001", Hero.builder().id("20001").level(1).build());
+        this.getHeroMap().put("20002", Hero.builder().id("20002").level(1).build());
+        this.getHeroMap().put("20003", Hero.builder().id("20003").level(1).build());
+        this.getHeroMap().put("30001", Hero.builder().id("30001").level(1).build());
+        this.getHeroMap().put("30002", Hero.builder().id("30002").level(1).build());
         this.getItemMap().put("1", Item.builder().count(100000).build());
     }
 }

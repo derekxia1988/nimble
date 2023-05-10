@@ -1,11 +1,14 @@
 package com.xcompany.nimble.biz.executor;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.JSONSerializer;
 import com.xcompany.nimble.base.net.ws.WSReqEvent;
 import com.xcompany.nimble.biz.data.mongo.Player;
+import com.xcompany.nimble.biz.data.protocol.Request.ReqHeroLvUpData;
 import com.xcompany.nimble.biz.data.protocol.Request.ReqOpCode;
 import com.xcompany.nimble.biz.db.PlayerRepository;
+import com.xcompany.nimble.biz.gameplay.HeroService;
 import com.xcompany.nimble.biz.gameplay.PlayerService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +25,10 @@ import java.time.LocalDateTime;
 public class ReqDispatcher implements ApplicationListener<WSReqEvent> {
     @Autowired
     private PlayerService playerService;
+
+    @Autowired
+    private HeroService heroService;
+
     private final PlayerRepository playerRepository;
     public ReqDispatcher(PlayerRepository playerRepository) {
         this.playerRepository = playerRepository;
@@ -42,6 +49,12 @@ public class ReqDispatcher implements ApplicationListener<WSReqEvent> {
 
         if(opCode == ReqOpCode.LOGIN.getOpCode()){
             this.playerService.login(player, false);
+        }
+        else if(opCode == ReqOpCode.HERO_LEVEL_UP.getOpCode()){
+            this.heroService.heroLevelUp(player, JSON.toJavaObject(event.getJsonObject().getJSONObject("reqData"), ReqHeroLvUpData.class));
+        }
+        else if(opCode == ReqOpCode.LORD_LEVEL_UP.getOpCode()){
+            this.heroService.lordLevelUp(player, JSON.toJavaObject(event.getJsonObject().getJSONObject("reqData"), ReqHeroLvUpData.class));
         }
     }
 }
