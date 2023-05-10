@@ -56,5 +56,7 @@ public class ReqDispatcher implements ApplicationListener<WSReqEvent> {
         else if(opCode == ReqOpCode.LORD_LEVEL_UP.getOpCode()){
             this.heroService.lordLevelUp(player, JSON.toJavaObject(event.getJsonObject().getJSONObject("reqData"), ReqHeroLvUpData.class));
         }
+
+        this.playerRepository.save(player);
     }
 }

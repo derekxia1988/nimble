@@ -47,7 +47,7 @@ class NumericsLoader {
         this.numericProperties = numericProperties;
     }
 
-//    @PostConstruct
+    @PostConstruct
     public void start() {
         log.info("[NUMERIC]load all numerics on start.");
         var numerics = loadAllNumerics();

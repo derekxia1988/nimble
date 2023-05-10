@@ -1,0 +1,12 @@
+[
+{"id":10001,"attackB":256,"attackI":7.5,"defB":216,"defI":6,"hpB":2061,"hpI":60,"speedB":18},
+{"id":10002,"attackB":256,"attackI":7.5,"defB":216,"defI":6,"hpB":2061,"hpI":60,"speedB":18},
+{"id":10003,"attackB":256,"attackI":7.5,"defB":216,"defI":6,"hpB":2061,"hpI":60,"speedB":18},
+{"id":10004,"attackB":256,"attackI":7.5,"defB":216,"defI":6,"hpB":2061,"hpI":60,"speedB":18},
+{"id":10005,"attackB":115,"attackI":3.3,"defB":96,"defI":2.5,"hpB":916,"hpI":26,"speedB":8},
+{"id":20001,"attackB":256,"attackI":7.5,"defB":216,"defI":6,"hpB":2061,"hpI":60,"speedB":18},
+{"id":20002,"attackB":256,"attackI":7.5,"defB":216,"defI":6,"hpB":2061,"hpI":60,"speedB":18},
+{"id":20003,"attackB":256,"attackI":7.5,"defB":216,"defI":6,"hpB":2061,"hpI":60,"speedB":18},
+{"id":30001,"attackB":171,"attackI":5,"defB":144,"defI":4,"hpB":1374,"hpI":40,"speedB":12},
+{"id":30002,"attackB":115,"attackI":3.3,"defB":96,"defI":2.5,"hpB":916,"hpI":26,"speedB":8}
+]

@@ -45,7 +45,8 @@ spring:
   main:
     banner-mode: off
 numeric:
-  path: ${project.basedir}/numeric # 数值配置文件路径
+  path: numeric # 数值配置文件路径
+  packagePath: com.xcompany.nimble.biz.data.numeric
 
 net:
   tcp:
