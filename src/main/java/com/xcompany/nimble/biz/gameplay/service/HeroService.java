@@ -8,6 +8,7 @@ import com.xcompany.nimble.biz.gameplay.data.protocol.Request.ReqHeroLvUpData;
 import com.xcompany.nimble.biz.gameplay.data.protocol.Request.ReqLordLvUpData;
 import com.xcompany.nimble.biz.gameplay.data.protocol.Response.RespBase;
 import com.xcompany.nimble.biz.gameplay.data.protocol.Response.RespHeroData;
+import com.xcompany.nimble.biz.gameplay.data.protocol.Response.RespLordData;
 import com.xcompany.nimble.biz.gameplay.data.protocol.Response.RespOpCode;
 import com.xcompany.nimble.biz.numeric.Numerics;
 import lombok.extern.log4j.Log4j2;
@@ -49,9 +50,8 @@ public class HeroService extends BaseService {
 
         this.itemManager.cost(player, "1", needCoin);
 
-        RespHeroData respLevelUpData = new RespHeroData();
-        respLevelUpData.setLordLevel(player.getLordLevel());
-        RespBase respBase = RespBase.builder().pid(player.getId()).opCode(RespOpCode.LORD_LEVEL_UP.getOpCode()).respData(respLevelUpData).build();
+        RespLordData respLordData = RespLordData.builder().lordLevel(player.getLordLevel()).build();
+        RespBase respBase = RespBase.builder().pid(player.getId()).opCode(RespOpCode.LORD_LEVEL_UP.getOpCode()).respData(respLordData).build();
         this.publisher.publishEvent(new WSRespEvent(this, player.getId(), respBase));
     }
 }
