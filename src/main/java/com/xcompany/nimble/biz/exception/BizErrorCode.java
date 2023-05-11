@@ -18,7 +18,12 @@ public enum BizErrorCode {
     /**
      * 用户不存在或密码错误
      */
-    USER_NOT_FOUND(USER, 2);
+    USER_NOT_FOUND(USER, 2),
+
+    ITEM_NOT_ENOUGH(CULTIVATION, 1252)
+
+    ;
+
     private final BizModule module;
     /**
      * 每个模块的错误码都可以从1开始

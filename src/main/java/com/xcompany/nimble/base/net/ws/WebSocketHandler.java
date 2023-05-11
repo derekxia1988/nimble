@@ -60,6 +60,7 @@ public class WebSocketHandler extends AbstractWebSocketHandler implements Applic
         }
 
         publisher.publishEvent(new WSReqEvent(session, req));
+        publisher.publishEvent(this);
 
         // 这是业务线程池的例子
 //        bizExecutor.execute(session.getId(), () -> {

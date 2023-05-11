@@ -1,7 +1,6 @@
 package com.xcompany.nimble.biz.db;
 
-import com.google.common.collect.Maps;
-import com.xcompany.nimble.biz.data.mongo.Player;
+import com.xcompany.nimble.biz.gameplay.data.mongo.Player;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;

@@ -1,0 +1,17 @@
+[
+{"id":1,"cost":50,"cost1":20,"levelCap":100},
+{"id":2,"cost":200,"cost1":100,"levelCap":100},
+{"id":3,"cost":500,"cost1":200,"levelCap":200},
+{"id":4,"cost":800,"cost1":400,"levelCap":200},
+{"id":5,"cost":1500,"cost1":800,"levelCap":200},
+{"id":6,"cost":3000,"cost1":1500,"levelCap":200},
+{"id":7,"cost":5000,"cost1":2500,"levelCap":200},
+{"id":8,"cost":8000,"cost1":4000,"levelCap":200},
+{"id":9,"cost":15000,"cost1":8000,"levelCap":300},
+{"id":10,"cost":25000,"cost1":12000,"levelCap":300},
+{"id":11,"cost":35000,"cost1":18000,"levelCap":300},
+{"id":12,"cost":45000,"cost1":24000,"levelCap":400},
+{"id":13,"cost":60000,"cost1":30000,"levelCap":400},
+{"id":14,"cost":80000,"cost1":40000,"levelCap":400},
+{"id":15,"cost":100000,"cost1":50000,"levelCap":400}
+]

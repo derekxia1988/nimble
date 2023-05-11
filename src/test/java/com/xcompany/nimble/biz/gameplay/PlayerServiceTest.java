@@ -1,7 +1,6 @@
 package com.xcompany.nimble.biz.gameplay;
 
-import com.xcompany.nimble.biz.data.mongo.Player;
-import org.junit.Assert;
+import com.xcompany.nimble.biz.gameplay.service.PlayerService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
