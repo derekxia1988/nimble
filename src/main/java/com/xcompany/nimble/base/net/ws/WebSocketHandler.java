@@ -53,6 +53,7 @@ public class WebSocketHandler extends AbstractWebSocketHandler implements Applic
         if(currentSession != session){
             if(currentSession != null) {
                 this.sessionMap.get(pid).close();
+                this.sessionMap.remove(pid);
             }
 
             sessionMap.putIfAbsent(pid, session);
