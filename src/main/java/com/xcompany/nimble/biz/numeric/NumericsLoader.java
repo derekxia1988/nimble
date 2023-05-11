@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.xcompany.nimble.base.exception.StartServerException;
+import com.xcompany.nimble.biz.gameplay.data.numeric.ConstNumeric;
 import com.xcompany.nimble.common.util.ReflectUtils;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.log4j.Log4j2;
@@ -24,6 +25,7 @@ import java.nio.file.Files;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.List;
 
 /**
  * @author xiadong
@@ -137,33 +139,33 @@ class NumericsLoader {
 
     // TODO: ConstNumeric被注释掉了
     private void loadConstNumeric(File file) {
-//        try {
-//            var contents = Files.readString(file.toPath());
-//
-//            fillConstNumeric(contents);
-//
-//            log.info("finish load numeric: {}", ConstNumeric.class.getSimpleName());
-//
-//        } catch (Exception e) {
-//            throw new StartServerException("load numeric file %s error.".formatted(file.getName()), e);
-//        }
+        try {
+            var contents = Files.readString(file.toPath());
+
+            fillConstNumeric(contents);
+
+            log.info("finish load numeric: {}", ConstNumeric.class.getSimpleName());
+
+        } catch (Exception e) {
+            throw new StartServerException("load numeric file %s error.".formatted(file.getName()), e);
+        }
 
     }
 
-//    private static void fillConstNumeric(String contents) {
-//        var jsonObj = JSONObject.parseObject(contents);
-//
-//        Arrays.stream(ConstNumeric.class.getDeclaredFields())
-//                .filter(field -> Modifier.isStatic(field.getModifiers()))
-//                .forEach(field -> {
-//                    var v = jsonObj.getObject(field.getName(), field.getType());
-//                    try {
-//                        field.set(null, v);
-//                    } catch (IllegalAccessException e) {
-//                        throw new StartServerException("load numeric file Const.json error.", e);
-//                    }
-//                });
-//    }
+    private static void fillConstNumeric(String contents) {
+        var jsonObj = JSONObject.parseObject(contents);
+
+        Arrays.stream(ConstNumeric.class.getDeclaredFields())
+                .filter(field -> Modifier.isStatic(field.getModifiers()))
+                .forEach(field -> {
+                    var v = jsonObj.getObject(field.getName(), field.getType());
+                    try {
+                        field.set(null, v);
+                    } catch (IllegalAccessException e) {
+                        throw new StartServerException("load numeric file Const.json error.", e);
+                    }
+                });
+    }
 
 //    @Autowired
 //    public void setPreprocessors(List<NumericPreprocessor> preprocessors) {
