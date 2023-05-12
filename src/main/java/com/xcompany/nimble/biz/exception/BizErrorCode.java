@@ -23,7 +23,6 @@ public enum BizErrorCode {
     HERO_LEVEL_EXCEED_LORD(CULTIVATION, 1004),
 
     ITEM_NOT_ENOUGH(RESOURCE, 1252)
-
     ;
 
     private final BizModule module;

@@ -27,4 +27,8 @@ public class SchedulerConfiguration implements SchedulingConfigurer {
     public void configureTasks(@NonNull ScheduledTaskRegistrar taskRegistrar) {
         taskRegistrar.setTaskScheduler(taskScheduler);
     }
+
+    public ThreadPoolTaskScheduler getTaskScheduler() {
+        return taskScheduler;
+    }
 }
