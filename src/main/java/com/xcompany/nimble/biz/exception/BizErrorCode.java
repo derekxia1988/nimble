@@ -14,11 +14,11 @@ public enum BizErrorCode {
     /**
      * 用户已存在
      */
-    USER_ALREADY_EXISTS(USER, 1),
+    USER_ALREADY_EXISTS(USER, 2),
     /**
      * 用户不存在或密码错误
      */
-    USER_NOT_FOUND(USER, 2),
+    USER_NOT_FOUND(USER, 3),
 
     HERO_LEVEL_EXCEED_LORD(CULTIVATION, 1004),
 
@@ -40,6 +40,7 @@ public enum BizErrorCode {
     public String getErrorCode() {
         return String.format("%d%03d", module.getCode(), code);
     }
+    public int getCode(){ return this.code; }
 
     public BizException error(String msg) {
         return new BizException(this, msg);

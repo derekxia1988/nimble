@@ -72,7 +72,7 @@ public class Player {
             }
         }
 
-        this.getItemMap().put("1", Item.builder().count(ConstNumeric.START_COIN).build());
+        this.getItemMap().put("1", Item.builder().id(1).count(ConstNumeric.START_COIN).build());
         this.getStageProgressMap().put(String.valueOf(StageType.MAIN_PVE_STAGE.getTypeCode()), ConstNumeric.START_STAGE);
     }
 }

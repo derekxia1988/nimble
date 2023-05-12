@@ -22,7 +22,7 @@ public class RewardManager {
             if(rewardNumeric.getType() == 1){
                 int count = rewardNumeric.getCount() + (int)(rewardNumeric.getFactors()[0] * params[0]);
                 itemManager.incr(player, String.valueOf(rewardNumeric.getItemId()), count);
-                itemList.add(Item.builder().count(count).build());
+                itemList.add(Item.builder().id(rewardNumeric.getItemId()).count(count).build());
             }
         }
 

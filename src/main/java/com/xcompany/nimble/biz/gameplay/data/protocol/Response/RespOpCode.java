@@ -1,6 +1,7 @@
 package com.xcompany.nimble.biz.gameplay.data.protocol.Response;
 
 public enum RespOpCode {
+    ERROR(-1),
     LOGIN(10001),
     STAGE_UNLOCK(20001),
     LORD_LEVEL_UP(30000),

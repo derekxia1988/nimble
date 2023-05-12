@@ -6,6 +6,8 @@ import lombok.Builder;
 public class Item {
     private int count;
 
+    private int id;
+
     public int getCount() {
         return count;
     }
