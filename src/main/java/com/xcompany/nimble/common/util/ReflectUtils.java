@@ -48,10 +48,7 @@ public class ReflectUtils {
         Reflections reflections = new Reflections(
                 new ConfigurationBuilder()
                         .forPackages(packageName)
-                        .filterInputsBy(
-                                new FilterBuilder().includePackage(packageName)
-                        ).setScanners(Scanners.SubTypes)
-
+                        .setScanners(Scanners.SubTypes)
         );
         return reflections.getSubTypesOf(interfaceClz);
     }
