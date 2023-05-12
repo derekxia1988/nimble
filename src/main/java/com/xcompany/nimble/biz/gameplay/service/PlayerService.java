@@ -1,5 +1,6 @@
 package com.xcompany.nimble.biz.gameplay.service;
 
+import com.alibaba.fastjson.JSON;
 import com.xcompany.nimble.base.net.ws.WSRespEvent;
 import com.xcompany.nimble.biz.gameplay.data.mongo.Player;
 import com.xcompany.nimble.biz.gameplay.data.protocol.Request.ReqLoginData;
@@ -15,11 +16,12 @@ import org.springframework.stereotype.Service;
 public class PlayerService extends BaseService {
     @EventListener(ReqLoginData.class)
     public void login(ReqLoginData loginData){
+        log.info("FUCK");
         Player player = loginData.getPlayer();
 
         RespLoginData respLoginData = RespLoginData.builder().player(player).build();
         RespBase respBase = RespBase.builder().pid(player.getId()).opCode(RespOpCode.LOGIN.getOpCode()).respData(respLoginData).build();
-//        log.error("返回对象:{}", JSON.toJSONString(respLoginData));
+        log.error("返回对象:{}", JSON.toJSONString(respLoginData));
         publisher.publishEvent(new WSRespEvent(player, player.getId(), respBase));
     }
 }

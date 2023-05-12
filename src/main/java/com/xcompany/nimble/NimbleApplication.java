@@ -9,7 +9,5 @@ public class NimbleApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(NimbleApplication.class, args);
-        System.out.println(ConstNumeric.ENERGY_DIAMOND_BUY_AMOUNT);
     }
-
 }
