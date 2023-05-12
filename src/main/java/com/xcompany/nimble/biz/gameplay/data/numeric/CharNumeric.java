@@ -16,6 +16,10 @@ public class CharNumeric implements NumericTable {
     /**
      * 
      */
+    private String nickName = "none";
+    /**
+     * 
+     */
     private int model = 0;
     /**
      * 
@@ -46,6 +50,15 @@ public class CharNumeric implements NumericTable {
 
     public void setName(String newValue) {
         name = newValue;
+    }
+
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String newValue) {
+        nickName = newValue;
     }
 
 

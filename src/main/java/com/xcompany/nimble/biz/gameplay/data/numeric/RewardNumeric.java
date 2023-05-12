@@ -20,7 +20,7 @@ public class RewardNumeric implements NumericTable {
     /**
      * 
      */
-    private int count;
+    private int count = 0;
     /**
      * 
      */

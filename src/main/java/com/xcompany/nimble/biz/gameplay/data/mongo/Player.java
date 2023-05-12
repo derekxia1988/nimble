@@ -5,6 +5,7 @@ import com.xcompany.nimble.biz.gameplay.data.mongo.hero.TeamType;
 import com.xcompany.nimble.biz.gameplay.data.mongo.stage.StageType;
 import com.xcompany.nimble.biz.gameplay.data.mongo.hero.BattlePosType;
 import com.xcompany.nimble.biz.gameplay.data.mongo.hero.Hero;
+import com.xcompany.nimble.biz.gameplay.data.numeric.ConstNumeric;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -61,20 +62,17 @@ public class Player {
 
     public void init(){
         this.lordLevel= 1;
-
-        this.getHeroMap().put("20001", Hero.builder().id("20001").level(1).build());
-        this.getHeroMap().put("20002", Hero.builder().id("20002").level(1).build());
-        this.getHeroMap().put("20003", Hero.builder().id("20003").level(1).build());
-        this.getHeroMap().put("30001", Hero.builder().id("30001").level(1).build());
-        this.getHeroMap().put("30002", Hero.builder().id("30002").level(1).build());
-        this.getItemMap().put("1", Item.builder().count(100000).build());
-        this.getStageProgressMap().put(String.valueOf(StageType.MAIN_PVE_STAGE.getTypeCode()), 10000101);
-
         this.teamMap.put(String.valueOf(TeamType.MAIN_PVE.getTypeCode()), Maps.newHashMap());
-        this.teamMap.get(String.valueOf(TeamType.MAIN_PVE.getTypeCode())).put(String.valueOf(BattlePosType.FRONT1.getTypeCode()), "20001");
-        this.teamMap.get(String.valueOf(TeamType.MAIN_PVE.getTypeCode())).put(String.valueOf(BattlePosType.FRONT2.getTypeCode()), "20002");
-        this.teamMap.get(String.valueOf(TeamType.MAIN_PVE.getTypeCode())).put(String.valueOf(BattlePosType.BACK1.getTypeCode()), "20003");
-        this.teamMap.get(String.valueOf(TeamType.MAIN_PVE.getTypeCode())).put(String.valueOf(BattlePosType.BACK2.getTypeCode()), "30001");
-        this.teamMap.get(String.valueOf(TeamType.MAIN_PVE.getTypeCode())).put(String.valueOf(BattlePosType.BACK3.getTypeCode()), "30002");
+
+        for(int i = 0; i < ConstNumeric.START_TEAM.length; i++){
+            String heroId = String.valueOf(ConstNumeric.START_TEAM[i]);
+            if(!heroId.equals("0")) {
+                this.getHeroMap().put(String.valueOf(heroId), Hero.builder().id(String.valueOf(heroId)).level(1).build());
+                this.teamMap.get(String.valueOf(TeamType.MAIN_PVE.getTypeCode())).put(String.valueOf(i), "20001");
+            }
+        }
+
+        this.getItemMap().put("1", Item.builder().count(ConstNumeric.START_COIN).build());
+        this.getStageProgressMap().put(String.valueOf(StageType.MAIN_PVE_STAGE.getTypeCode()), ConstNumeric.START_STAGE);
     }
 }

@@ -1,6 +1,8 @@
 package com.xcompany.nimble.biz.gameplay.service;
 
 import com.xcompany.nimble.base.net.ws.WSRespEvent;
+import com.xcompany.nimble.biz.exception.BizErrorCode;
+import com.xcompany.nimble.biz.exception.BizException;
 import com.xcompany.nimble.biz.gameplay.data.mongo.hero.Hero;
 import com.xcompany.nimble.biz.gameplay.data.mongo.Player;
 import com.xcompany.nimble.biz.gameplay.data.numeric.CharLevelNumeric;
@@ -23,6 +25,10 @@ public class HeroService extends BaseService {
     public void heroLevelUp(ReqHeroLvUpData reqHeroLvUpData) {
         Player player = reqHeroLvUpData.getPlayer();
         Hero hero = player.getHeroMap().get(reqHeroLvUpData.getHeroId());
+
+        if(hero.getLevel() + reqHeroLvUpData.getLevel() > player.getLordLevel()){
+            throw new BizException(BizErrorCode.HERO_LEVEL_EXCEED_LORD, String.format("lord level: {} reqeuest level: {}", player.getLordLevel(), hero.getLevel() + reqHeroLvUpData.getLevel()));
+        }
 
         int needCoin = 0;
         for(int i = 0; i < reqHeroLvUpData.getLevel(); i++){

@@ -17,6 +17,22 @@ public class CharLevelNumeric implements NumericTable {
      * 
      */
     private int loardCost = 0;
+    /**
+     * 
+     */
+    private int attack = 0;
+    /**
+     * 
+     */
+    private int def = 0;
+    /**
+     * 
+     */
+    private int hp = 0;
+    /**
+     * 
+     */
+    private int gradeCost = 0;
 
     @Override
     public int getId() {
@@ -43,6 +59,42 @@ public class CharLevelNumeric implements NumericTable {
 
     public void setLoardCost(int newValue) {
         loardCost = newValue;
+    }
+
+
+    public int getAttack() {
+        return attack;
+    }
+
+    public void setAttack(int newValue) {
+        attack = newValue;
+    }
+
+
+    public int getDef() {
+        return def;
+    }
+
+    public void setDef(int newValue) {
+        def = newValue;
+    }
+
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int newValue) {
+        hp = newValue;
+    }
+
+
+    public int getGradeCost() {
+        return gradeCost;
+    }
+
+    public void setGradeCost(int newValue) {
+        gradeCost = newValue;
     }
 
 
