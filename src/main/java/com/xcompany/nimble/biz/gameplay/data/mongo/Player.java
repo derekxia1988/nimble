@@ -24,7 +24,7 @@ public class Player {
 
     private Map<String, Item> itemMap = Maps.newHashMap();
 
-    private Map<String, Map<String, String>> teamMap = Maps.newHashMap();
+    private Map<String, Map<String, Integer>> teamMap = Maps.newHashMap();
 
     private Map<String, Integer> stageProgressMap = Maps.newHashMap();
 
@@ -52,7 +52,7 @@ public class Player {
         return itemMap;
     }
 
-    public Map<String, Map<String, String>> getTeamMap() {
+    public Map<String, Map<String, Integer>> getTeamMap() {
         return teamMap;
     }
 
@@ -68,7 +68,7 @@ public class Player {
             String heroId = String.valueOf(ConstNumeric.START_TEAM[i]);
             if(!heroId.equals("0")) {
                 this.getHeroMap().put(String.valueOf(heroId), Hero.builder().id(String.valueOf(heroId)).level(1).build());
-                this.teamMap.get(String.valueOf(TeamType.MAIN_PVE.getTypeCode())).put(String.valueOf(i), "20001");
+                this.teamMap.get(String.valueOf(TeamType.MAIN_PVE.getTypeCode())).put(String.valueOf(i), ConstNumeric.START_TEAM[i]);
             }
         }
 

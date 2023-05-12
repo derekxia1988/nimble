@@ -1,8 +1,10 @@
 package com.xcompany.nimble.biz.gameplay.data.mongo;
 
 import lombok.Builder;
+import lombok.Data;
 
 @Builder
+@Data
 public class Item {
     private int count;
 

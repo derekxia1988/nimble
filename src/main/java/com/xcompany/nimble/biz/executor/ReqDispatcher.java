@@ -48,10 +48,14 @@ public class ReqDispatcher implements ApplicationListener<WSReqEvent> {
             RespErrorData respErrorData = RespErrorData.builder().reqOpCode(opCode).errorCode(bizException.getBizErrorCode().getCode()).msg(bizException.getMessage()).build();
             RespBase respBase = RespBase.builder().pid(pid).opCode(RespOpCode.ERROR.getOpCode()).respData(respErrorData).build();
             this.publisher.publishEvent(new WSRespEvent(this, pid, respBase));
+
+            log.error("[BizError] OpCode: {}, ErrorCode: {}, Msg: {} Exception: {}", opCode, bizException.getBizErrorCode().getCode(), bizException.getMessage(), bizException.toString());
         } catch (Exception exception){
             RespErrorData respErrorData = RespErrorData.builder().reqOpCode(opCode).errorCode(BizErrorCode.UNKNOWN_ERROR.getCode()).msg("Unknown server error.").build();
             RespBase respBase = RespBase.builder().pid(pid).opCode(RespOpCode.ERROR.getOpCode()).respData(respErrorData).build();
+            this.publisher.publishEvent(new WSRespEvent(this, pid, respBase));
 
+            log.error("[Unknown Error] OpCode: {}, Exception: {}", opCode, exception.toString());
         }
 
 
